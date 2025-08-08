@@ -190,4 +190,4 @@ if player_hp <= 0 and enemy_hp <= 0:
 elif player_hp <= 0:
     print(f"{player1_name} の敗北……")
 else:
-    print(f"{player1_name} の勝利だ！！")
+    print(f"{player1_name} の勝利だyatta！！")
