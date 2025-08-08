@@ -137,6 +137,26 @@ while player_hp > 0 and enemy_hp > 0:
             print(f"{player2_name} が防御！必殺は無効化された！")
         else:
             enemy_hp -= 10
+            # 派手な必殺技エフェクト
+            print(Fore.LIGHTYELLOW_EX + Style.BRIGHT)
+            print("\n" + "="*40)
+            print(Fore.RED + "★ 必殺技発動！！ ★" + Style.RESET_ALL)
+            print(Fore.MAGENTA + Style.BRIGHT)
+            print("""
+██████╗  ██████╗  ██████╗ ███╗   ███╗
+██╔══██╗██╔═══██╗██╔═══██╗████╗ ████║
+██████╔╝██║   ██║██║   ██║██╔████╔██║
+██╔═══╝ ██║   ██║██║   ██║██║╚██╔╝██║
+██║     ╚██████╔╝╚██████╔╝██║ ╚═╝ ██║
+╚═╝      ╚═════╝  ╚═════╝ ╚═╝     ╚═╝
+              BOOM!!
+"""
+            + Style.RESET_ALL)
+            print(Fore.LIGHTYELLOW_EX + """
+  ド派手なエネルギーが炸裂！！
+  {0} に10ダメージ！！
+            """.format(player2_name) + Style.RESET_ALL)
+            print("="*40 + "\n")
             print(Fore.RED + f"必殺技ヒット！！{player2_name} に10ダメージ！！" + Style.RESET_ALL)
     elif enemy_input == 3:
         enemy_gauge -= 2
@@ -144,6 +164,26 @@ while player_hp > 0 and enemy_hp > 0:
             print(f"{player1_name} が防御！必殺を無効化！")
         else:
             player_hp -= 10
+            # 派手な必殺技エフェクト（敵バージョン）
+            print(Fore.LIGHTYELLOW_EX + Style.BRIGHT)
+            print("\n" + "="*40)
+            print(Fore.RED + f"★ {player2_name} の必殺技発動！！ ★" + Style.RESET_ALL)
+            print(Fore.MAGENTA + Style.BRIGHT)
+            print("""
+██████╗  ██████╗  ██████╗ ███╗   ███╗
+██╔══██╗██╔═══██╗██╔═══██╗████╗ ████║
+██████╔╝██║   ██║██║   ██║██╔████╔██║
+██╔═══╝ ██║   ██║██║   ██║██║╚██╔╝██║
+██║     ╚██████╔╝╚██████╔╝██║ ╚═╝ ██║
+╚═╝      ╚═════╝  ╚═════╝ ╚═╝     ╚═╝
+              BOOM!!
+"""
+            + Style.RESET_ALL)
+            print(Fore.LIGHTYELLOW_EX + f"""
+  ド派手なエネルギーが炸裂！！
+  {player1_name} に10ダメージ！！
+            """ + Style.RESET_ALL)
+            print("="*40 + "\n")
             print(Fore.RED + f"{player2_name} の必殺技が命中！！10ダメージ！！" + Style.RESET_ALL)
     else:
         if player_input == 0 and enemy_input == 2:
