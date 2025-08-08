@@ -141,17 +141,19 @@ while player_hp > 0 and enemy_hp > 0:
             print(Fore.LIGHTYELLOW_EX + Style.BRIGHT)
             print("\n" + "="*40)
             print(Fore.RED + "★ 必殺技発動！！ ★" + Style.RESET_ALL)
-            print(Fore.MAGENTA + Style.BRIGHT)
-            print("""
-██████╗  ██████╗  ██████╗ ███╗   ███╗
-██╔══██╗██╔═══██╗██╔═══██╗████╗ ████║
-██████╔╝██║   ██║██║   ██║██╔████╔██║
-██╔═══╝ ██║   ██║██║   ██║██║╚██╔╝██║
-██║     ╚██████╔╝╚██████╔╝██║ ╚═╝ ██║
-╚═╝      ╚═════╝  ╚═════╝ ╚═╝     ╚═╝
-              BOOM!!
-"""
-            + Style.RESET_ALL)
+            print(Fore.RED + Style.BRIGHT)
+            print("         ■■■■■■■         ")
+            print("     ■■■■■■■■■■■■■     ")
+            print("   ■■■" + Fore.YELLOW + "■■■■■■■■■" + Fore.RED + "■■■   ")
+            print("  ■■■" + Fore.YELLOW + "■■■■■■■■■■■" + Fore.RED + "■■■  ")
+            print(" ■■■" + Fore.YELLOW + "■■■■■■■■■■■■■" + Fore.RED + "■■■ ")
+            print("■■■" + Fore.YELLOW + "■■■■■■■■■■■■■■■" + Fore.RED + "■■■")
+            print(" ■■■" + Fore.YELLOW + "■■■■■■■■■■■■■" + Fore.RED + "■■■ ")
+            print("  ■■■" + Fore.YELLOW + "■■■■■■■■■■■" + Fore.RED + "■■■  ")
+            print("   ■■■" + Fore.YELLOW + "■■■■■■■■■" + Fore.RED + "■■■   ")
+            print("     ■■■■■■■■■■■■■     ")
+            print("         ■■■■■■■         " + Style.RESET_ALL)
+            print(Fore.YELLOW + Style.BRIGHT + "\n         B O O M !!\n" + Style.RESET_ALL)
             print(Fore.LIGHTYELLOW_EX + """
   ド派手なエネルギーが炸裂！！
   {0} に10ダメージ！！
@@ -168,17 +170,19 @@ while player_hp > 0 and enemy_hp > 0:
             print(Fore.LIGHTYELLOW_EX + Style.BRIGHT)
             print("\n" + "="*40)
             print(Fore.RED + f"★ {player2_name} の必殺技発動！！ ★" + Style.RESET_ALL)
-            print(Fore.MAGENTA + Style.BRIGHT)
-            print("""
-██████╗  ██████╗  ██████╗ ███╗   ███╗
-██╔══██╗██╔═══██╗██╔═══██╗████╗ ████║
-██████╔╝██║   ██║██║   ██║██╔████╔██║
-██╔═══╝ ██║   ██║██║   ██║██║╚██╔╝██║
-██║     ╚██████╔╝╚██████╔╝██║ ╚═╝ ██║
-╚═╝      ╚═════╝  ╚═════╝ ╚═╝     ╚═╝
-              BOOM!!
-"""
-            + Style.RESET_ALL)
+            print(Fore.RED + Style.BRIGHT)
+            print("         ■■■■■■■         ")
+            print("     ■■■■■■■■■■■■■     ")
+            print("   ■■■" + Fore.YELLOW + "■■■■■■■■■" + Fore.RED + "■■■   ")
+            print("  ■■■" + Fore.YELLOW + "■■■■■■■■■■■" + Fore.RED + "■■■  ")
+            print(" ■■■" + Fore.YELLOW + "■■■■■■■■■■■■■" + Fore.RED + "■■■ ")
+            print("■■■" + Fore.YELLOW + "■■■■■■■■■■■■■■■" + Fore.RED + "■■■")
+            print(" ■■■" + Fore.YELLOW + "■■■■■■■■■■■■■" + Fore.RED + "■■■ ")
+            print("  ■■■" + Fore.YELLOW + "■■■■■■■■■■■" + Fore.RED + "■■■  ")
+            print("   ■■■" + Fore.YELLOW + "■■■■■■■■■" + Fore.RED + "■■■   ")
+            print("     ■■■■■■■■■■■■■     ")
+            print("         ■■■■■■■         " + Style.RESET_ALL)
+            print(Fore.YELLOW + Style.BRIGHT + "\n         B O O M !!\n" + Style.RESET_ALL)
             print(Fore.LIGHTYELLOW_EX + f"""
   ド派手なエネルギーが炸裂！！
   {player1_name} に10ダメージ！！
