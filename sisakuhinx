@@ -1,0 +1,4 @@
+#!/bin/bash
+./dist/バトルドーム
+read -p "Press Enter to close..."
+
