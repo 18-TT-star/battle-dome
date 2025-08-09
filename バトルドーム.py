@@ -89,16 +89,17 @@ def battle(is_two_player, player1_name, player2_name, level):
         # === プレイヤー1の入力 ===
         print(f"\n{Fore.RED}{player1_name}{Style.RESET_ALL} の番です。コマンドを選んでください:")
         for i, cmd in enumerate(commands):
-            print(f"{i}: {cmd}")
+            print(f"{i+1}: {cmd}")
 
         while True:
             try:
                 player_input = int(input("> "))
-                if player_input not in [0, 1, 2, 3]:
-                    print("※0〜3の番号で入力してください！")
-                elif player_input == 3 and player_gauge < 2:
+                if player_input not in [1, 2, 3, 4]:
+                    print("※1〜4の番号で入力してください！")
+                elif player_input == 4 and player_gauge < 2:
                     print("※ゲージが足りません！")
                 else:
+                    player_input -= 1  # 内部処理は0始まり
                     break
             except:
                 print("無効な入力です")
@@ -111,13 +112,14 @@ def battle(is_two_player, player1_name, player2_name, level):
                 try:
                     print(f"{Fore.BLUE}{player2_name}{Style.RESET_ALL} の番 （他の人は見ないで）")
                     for i, cmd in enumerate(commands):
-                        print(f"{i}: {cmd}")
+                        print(f"{i+1}: {cmd}")
                     enemy_input = int(input("> "))
-                    if enemy_input not in [0, 1, 2, 3]:
-                        print("※0〜3で入力してください！")
-                    elif enemy_input == 3 and enemy_gauge < 2:
+                    if enemy_input not in [1, 2, 3, 4]:
+                        print("※1〜4で入力してください！")
+                    elif enemy_input == 4 and enemy_gauge < 2:
                         print("※ゲージが足りません！")
                     else:
+                        enemy_input -= 1  # 内部処理は0始まり
                         break
                 except:
                     print("無効な入力です")
