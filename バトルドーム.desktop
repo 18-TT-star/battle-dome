@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=バトルドーム
+Comment=三すくみバトル（端末で実行）
+Exec=bash -lc '"/home/tt/デスクトップ/new game1/dist/バトルドーム (Linux)"; echo "\n終了しました。Enterで閉じます"; read'
+Terminal=true
+Categories=Game;
+Icon=
