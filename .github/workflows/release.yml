@@ -25,7 +25,7 @@ jobs:
 
       - name: Build exe
         run: |
-          pyinstaller --onefile battle_dome.py --name battle-dome.exe
+          pyinstaller --onefile --icon=icon.ico battle_dome.py --name battle-dome.exe
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
