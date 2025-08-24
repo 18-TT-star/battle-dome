@@ -4,11 +4,15 @@ import os
 from colorama import init, Fore, Style
 
 # colorama 初期化
-init()
+init(autoreset=True, strip=False)
 
 # === ヘルパー関数 ===
 def clear():
-    os.system("clear")
+    # クロスプラットフォーム対応
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')
 
 def draw_bar(current, max_value, bar_length=10):
     filled = int((current / max_value) * bar_length)

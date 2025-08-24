@@ -2,7 +2,7 @@
 
 
 a = Analysis(
-    ['バトルドーム.py'],
+    ['battle_dome.py'],
     pathex=[],
     binaries=[],
     datas=[],
