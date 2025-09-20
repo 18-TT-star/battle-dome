@@ -1,4 +1,4 @@
-('/home/tt/デスクトップ/new game1/build/バトルドーム/PYZ-00.pyz',
+('/home/tt/T.T GAMES/new game1/build/バトルドーム/PYZ-00.pyz',
  [('_compat_pickle', '/usr/lib/python3.12/_compat_pickle.py', 'PYMODULE'),
   ('_compression', '/usr/lib/python3.12/_compression.py', 'PYMODULE'),
   ('_py_abc', '/usr/lib/python3.12/_py_abc.py', 'PYMODULE'),
@@ -13,27 +13,27 @@
   ('bz2', '/usr/lib/python3.12/bz2.py', 'PYMODULE'),
   ('calendar', '/usr/lib/python3.12/calendar.py', 'PYMODULE'),
   ('colorama',
-   '/home/tt/デスクトップ/new '
+   '/home/tt/T.T GAMES/new '
    'game1/.venv/lib/python3.12/site-packages/colorama/__init__.py',
    'PYMODULE'),
   ('colorama.ansi',
-   '/home/tt/デスクトップ/new '
+   '/home/tt/T.T GAMES/new '
    'game1/.venv/lib/python3.12/site-packages/colorama/ansi.py',
    'PYMODULE'),
   ('colorama.ansitowin32',
-   '/home/tt/デスクトップ/new '
+   '/home/tt/T.T GAMES/new '
    'game1/.venv/lib/python3.12/site-packages/colorama/ansitowin32.py',
    'PYMODULE'),
   ('colorama.initialise',
-   '/home/tt/デスクトップ/new '
+   '/home/tt/T.T GAMES/new '
    'game1/.venv/lib/python3.12/site-packages/colorama/initialise.py',
    'PYMODULE'),
   ('colorama.win32',
-   '/home/tt/デスクトップ/new '
+   '/home/tt/T.T GAMES/new '
    'game1/.venv/lib/python3.12/site-packages/colorama/win32.py',
    'PYMODULE'),
   ('colorama.winterm',
-   '/home/tt/デスクトップ/new '
+   '/home/tt/T.T GAMES/new '
    'game1/.venv/lib/python3.12/site-packages/colorama/winterm.py',
    'PYMODULE'),
   ('contextlib', '/usr/lib/python3.12/contextlib.py', 'PYMODULE'),

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Terminal=true
+Name=バトルドーム
+Exec="/home/tt/T.T GAMES/new game1/release_package/バトルドーム"
+Icon=utilities-terminal
+Comment=三すくみバトルゲーム
+Categories=Game;

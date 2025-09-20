@@ -1,7 +1,29 @@
 import random
 import time
 import os
-from colorama import init, Fore, Style
+
+# colorama の存在確認と必要に応じたインストール
+try:
+    from colorama import init, Fore, Style
+except ImportError:
+    print("colorama が見つかりません。インストールしますか？ (y/n)")
+    ans = input("> ").strip().lower()
+    if ans == "y":
+        try:
+            import subprocess, sys
+            print("pip で colorama をインストール中...")
+            subprocess.check_call([sys.executable, "-m", "pip", "install", "colorama==0.4.6"])  # requirements と同一
+            from colorama import init, Fore, Style
+            print("インストール完了。再開します。")
+        except Exception as e:
+            print("インストールに失敗しました。以下のコマンドを手動で実行してください:")
+            print("pip install colorama==0.4.6")
+            input("Enter で終了")
+            raise
+    else:
+        print("先に次のコマンドを実行してください: pip install colorama==0.4.6")
+        input("Enter で終了")
+        raise
 
 # colorama 初期化
 init(autoreset=True, strip=False)
@@ -34,7 +56,25 @@ def draw_bar_with_blink(old_hp, new_hp, max_value, bar_length=10):
     print(draw_bar(new_hp, max_value))  # 最終バー表示
 
 def gauge_display(gauge, max_gauge=3):
-    return f"{'★' * gauge}{' ' * (max_gauge - gauge)} ({gauge}/{max_gauge})"
+    """ゲージの表示（★=1, 半分=⯨(フォントにより表示されない場合あり), ☆=0）
+    数値でも (x.y/max) を併記して明確化する。
+    """
+    full = "★"
+    half = "⯨"  # フォント非対応の場合は半分に見えない可能性あり
+    empty = "☆"
+    stars = []
+    for i in range(1, max_gauge + 1):
+        if gauge >= i - 1e-9:  # 完全
+            stars.append(Fore.YELLOW + full + Style.RESET_ALL)
+        elif gauge >= (i - 0.5) - 1e-9:  # 半分
+            stars.append(Fore.YELLOW + half + Style.RESET_ALL)
+        else:
+            stars.append(Style.DIM + empty + Style.RESET_ALL)
+    return f"{''.join(stars)} ({gauge:.1f}/{max_gauge})"
+
+
+def clamp_gauge(value, max_gauge=3.0):
+    return max(0.0, min(float(value), float(max_gauge)))
 
 
 # === メインループ・リトライ・メニュー機能 ===
@@ -81,9 +121,14 @@ def battle(is_two_player, player1_name, player2_name, level):
     enemy_hp_max, cpu_special_chance = get_enemy_hp_max_and_chance(is_two_player, level)
     player_hp = 10
     enemy_hp = enemy_hp_max
-    player_gauge = 0
-    enemy_gauge = 0
-    commands = ["攻撃", "防御", "溜め", "必殺(必要ゲージ: 2★)"]
+    player_gauge = 0.0
+    enemy_gauge = 0.0
+    commands = [
+        "攻撃",
+        "防御(成功でゲージ+0.5)",
+        "溜め(ゲージ+1)",
+        "必殺(必要ゲージ: 2★)"
+    ]
 
     while player_hp > 0 and enemy_hp > 0:
         print(Fore.YELLOW + f"\n--- 現在のステータス ---" + Style.RESET_ALL)
@@ -145,11 +190,11 @@ def battle(is_two_player, player1_name, player2_name, level):
 
         # === 行動処理 ===
         if player_input == 3 and enemy_input == 3:
-            player_gauge -= 2
-            enemy_gauge -= 2
+            player_gauge = clamp_gauge(player_gauge - 2)
+            enemy_gauge = clamp_gauge(enemy_gauge - 2)
             print(Fore.YELLOW + "必殺技同士がぶつかって相殺された！" + Style.RESET_ALL)
         elif player_input == 3:
-            player_gauge -= 2
+            player_gauge = clamp_gauge(player_gauge - 2)
             if enemy_input == 1:
                 print(f"{player2_name} が防御！必殺は無効化された！")
             else:
@@ -172,7 +217,7 @@ def battle(is_two_player, player1_name, player2_name, level):
                 print("="*40 + "\n")
                 print(Fore.RED + f"必殺技ヒット！！{player2_name} に10ダメージ！！" + Style.RESET_ALL)
         elif enemy_input == 3:
-            enemy_gauge -= 2
+            enemy_gauge = clamp_gauge(enemy_gauge - 2)
             if player_input == 1:
                 print(f"{player1_name} が防御！必殺を無効化！")
             else:
@@ -202,18 +247,20 @@ def battle(is_two_player, player1_name, player2_name, level):
                 player_hp -= 1
                 print(f"{player2_name} の攻撃がヒット！{player1_name} は1ダメージ！")
             elif player_input == 1 and enemy_input == 0:
-                print(f"{player1_name} が攻撃を防いだ！")
+                player_gauge = clamp_gauge(player_gauge + 0.5)
+                print(f"{player1_name} が攻撃を防いだ！ゲージ+0.5！")
             elif player_input == 0 and enemy_input == 1:
-                print(f"{player2_name} が攻撃を防いだ！")
+                enemy_gauge = clamp_gauge(enemy_gauge + 0.5)
+                print(f"{player2_name} が攻撃を防いだ！ゲージ+0.5！")
             elif player_input == 2 and enemy_input == 1:
-                player_gauge += 1
+                player_gauge = clamp_gauge(player_gauge + 1)
                 print(f"{player1_name} は溜め成功！ゲージ+1！")
             elif player_input == 1 and enemy_input == 2:
-                enemy_gauge += 1
+                enemy_gauge = clamp_gauge(enemy_gauge + 1)
                 print(f"{player2_name} は溜め成功！ゲージ+1！")
             elif player_input == 2 and enemy_input == 2:
-                player_gauge += 1
-                enemy_gauge += 1
+                player_gauge = clamp_gauge(player_gauge + 1)
+                enemy_gauge = clamp_gauge(enemy_gauge + 1)
                 print("両者溜めた！ゲージ+1ずつ！")
             elif player_input == 0 and enemy_input == 0:
                 player_hp -= 1
